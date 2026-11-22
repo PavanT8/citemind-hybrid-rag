@@ -3,7 +3,10 @@ import logging
 from typing import List, Dict, Any, Tuple
 import httpx
 
-from backend.app.config import settings
+try:
+    from app.config import settings
+except ImportError:
+    from backend.app.config import settings
 
 logger = logging.getLogger(__name__)
 

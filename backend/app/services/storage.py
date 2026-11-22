@@ -2,8 +2,12 @@ import os
 import sqlite3
 from typing import Dict, List, Optional
 from datetime import datetime, timezone
-from backend.app.schemas import DocumentInfo, EvalHistoryItem, EvalSummary
-from backend.app.services.pdf_parser import Chunk
+try:
+    from app.schemas import DocumentInfo, EvalHistoryItem, EvalSummary
+    from app.services.pdf_parser import Chunk
+except ImportError:
+    from backend.app.schemas import DocumentInfo, EvalHistoryItem, EvalSummary
+    from backend.app.services.pdf_parser import Chunk
 
 
 class StorageService:

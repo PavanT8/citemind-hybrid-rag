@@ -5,8 +5,12 @@ from typing import List, Dict, Any, Tuple
 import numpy as np
 from rank_bm25 import BM25Okapi
 
-from backend.app.config import settings
-from backend.app.services.pdf_parser import Chunk
+try:
+    from app.config import settings
+    from app.services.pdf_parser import Chunk
+except ImportError:
+    from backend.app.config import settings
+    from backend.app.services.pdf_parser import Chunk
 
 logger = logging.getLogger(__name__)
 

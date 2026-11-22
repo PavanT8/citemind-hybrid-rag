@@ -1,28 +1,51 @@
 import os
+import sys
 import uuid
 from datetime import datetime, timezone
 from contextlib import asynccontextmanager
 from typing import List
 
+# Ensure both backend root and monorepo root are in sys.path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
+
 from fastapi import FastAPI, UploadFile, File, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.app.config import settings
-from backend.app.schemas import (
-    HealthResponse,
-    DocumentInfo,
-    QueryRequest,
-    QueryResponse,
-    QueryMetrics,
-    CitationItem,
-    EvalHistoryResponse
-)
-from backend.app.services.pdf_parser import parse_and_chunk_pdf
-from backend.app.services.storage import storage_service
-from backend.app.services.hybrid_retriever import hybrid_retriever
-from backend.app.services.llm_client import llm_client
-from backend.app.services.evaluator import evaluator
-from backend.app.sample_data.generate_sample_pdf import generate_sample_pdf
+try:
+    from app.config import settings
+    from app.schemas import (
+        HealthResponse,
+        DocumentInfo,
+        QueryRequest,
+        QueryResponse,
+        QueryMetrics,
+        CitationItem,
+        EvalHistoryResponse
+    )
+    from app.services.pdf_parser import parse_and_chunk_pdf
+    from app.services.storage import storage_service
+    from app.services.hybrid_retriever import hybrid_retriever
+    from app.services.llm_client import llm_client
+    from app.services.evaluator import evaluator
+    from app.sample_data.generate_sample_pdf import generate_sample_pdf
+except ImportError:
+    from backend.app.config import settings
+    from backend.app.schemas import (
+        HealthResponse,
+        DocumentInfo,
+        QueryRequest,
+        QueryResponse,
+        QueryMetrics,
+        CitationItem,
+        EvalHistoryResponse
+    )
+    from backend.app.services.pdf_parser import parse_and_chunk_pdf
+    from backend.app.services.storage import storage_service
+    from backend.app.services.hybrid_retriever import hybrid_retriever
+    from backend.app.services.llm_client import llm_client
+    from backend.app.services.evaluator import evaluator
+    from backend.app.sample_data.generate_sample_pdf import generate_sample_pdf
 
 
 SAMPLE_PDF_PATH = os.path.join(
