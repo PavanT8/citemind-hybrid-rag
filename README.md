@@ -2,6 +2,10 @@
 
 > Academic-grade Hybrid Retrieval-Augmented Generation (RAG) research assistant with inline `[Page X]` citations, source inspector, and real-time evaluation dashboard. Engineered for zero-cost deployment on Render Free (512MB RAM) and Vercel Hobby, with full support for local offline inference via LM Studio.
 
+🔗 **Live Web Application**: [https://citemind-frontend.vercel.app](https://citemind-frontend.vercel.app)  
+⚡ **Live Backend API**: [https://citemind-backend-0536.onrender.com](https://citemind-backend-0536.onrender.com)  
+📖 **Interactive Swagger Docs**: [https://citemind-backend-0536.onrender.com/docs](https://citemind-backend-0536.onrender.com/docs)  
+
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![Next.js 14+](https://img.shields.io/badge/Next.js-14+-000000?logo=nextdotjs&logoColor=white)](https://nextjs.org)
