@@ -21,7 +21,7 @@ class Settings(BaseSettings):
     # Server & CORS
     PORT: int = 8000
     ENVIRONMENT: str = "development"
-    CORS_ORIGINS: str = "http://localhost:3000,http://127.0.0.1:3000"
+    CORS_ORIGINS: str = "https://citemind-frontend.vercel.app,http://localhost:3000,http://127.0.0.1:3000"
 
     # Evaluation & Data Storage
     ENABLE_EVAL_LOGGING: bool = True
@@ -38,7 +38,11 @@ class Settings(BaseSettings):
     def cors_origins_list(self) -> List[str]:
         if not self.CORS_ORIGINS:
             return ["*"]
-        return [origin.strip() for origin in self.CORS_ORIGINS.split(",") if origin.strip()]
+        origins = [origin.strip() for origin in self.CORS_ORIGINS.split(",") if origin.strip()]
+        for default_origin in ["https://citemind-frontend.vercel.app", "http://localhost:3000"]:
+            if default_origin not in origins:
+                origins.append(default_origin)
+        return origins
 
 
 settings = Settings()

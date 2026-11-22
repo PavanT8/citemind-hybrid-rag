@@ -19,6 +19,6 @@ services:
       - key: GEMINI_EMBED_MODEL
         value: gemini-embedding-001
       - key: CORS_ORIGINS
-        value: http://localhost:3000
+        value: https://citemind-frontend.vercel.app,http://localhost:3000
       - key: ENVIRONMENT
         value: production
